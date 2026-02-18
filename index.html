@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIMS - Stock Inventory Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- REGISTER -->
+<section id="registerSection" class="auth-section">
+  <h2><i class="fa fa-user-plus"></i> Register</h2>
+  <form id="registerForm">
+    <div class="inputIcon"><i class="fa fa-user"></i><input type="text" id="regName" placeholder="Full Name" required></div>
+    <div class="inputIcon"><i class="fa fa-envelope"></i><input type="email" id="regEmail" placeholder="Email" required></div>
+    <div class="inputIcon"><i class="fa fa-lock"></i><input type="password" id="regPassword" placeholder="Password" required></div>
+    <div class="inputIcon"><i class="fa fa-lock"></i><input type="password" id="regConfirmPassword" placeholder="Confirm Password" required></div>
+    <button type="submit">Register</button>
+    <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+  </form>
+</section>
+
+<!-- LOGIN -->
+<section id="loginSection" class="auth-section hidden">
+  <h2><i class="fa fa-lock"></i> Login</h2>
+  <form id="loginForm">
+    <div class="inputIcon"><i class="fa fa-envelope"></i><input type="email" id="loginEmail" placeholder="Email" required></div>
+    <div class="inputIcon"><i class="fa fa-lock"></i><input type="password" id="loginPassword" placeholder="Password" required></div>
+    <button type="submit">Login</button>
+    <p>No account? <a href="#" id="showRegister">Register</a></p>
+  </form>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboardSection" class="hidden">
+<header>
+  <h1>📶SIMS – Stock Inventory</h1>
+  <div>
+    <span id="loggedUser"></span>
+    <button id="logoutBtn">Logout</button>
+    <button id="darkModeToggle"><i class="fa fa-moon"></i></button>
+  </div>
+</header>
+
+<div class="container">
+<aside id="sidebar">
+  <ul>
+    <li id="menuDashboard" class="active"><i class="fa fa-chart-line"></i> Dashboard</li>
+    <li id="menuProducts"><i class="fa fa-box"></i> Products</li>
+    <li id="menuReports"><i class="fa fa-file-alt"></i> Reports</li>
+    <li id="menuSettings"><i class="fa fa-cog"></i> Settings</li>
+  </ul>
+</aside>
+
+<main>
+  <!-- Dashboard -->
+  <section id="dashboardContent">
+    <div class="cards">
+      <div class="card">Total Products: <span id="totalProducts">0</span></div>
+      <div class="card">In Stock: <span id="inStock">0</span></div>
+      <div class="card">Out of Stock: <span id="outStock">0</span></div>
+    </div>
+    <canvas id="reportChart"></canvas>
+    <canvas id="stockStatusChart"></canvas>
+  </section>
+
+  <!-- Products -->
+  <section id="productsContent" class="hidden">
+    <button id="showAddProduct">+ Add Product</button>
+    <input type="text" id="searchProduct" placeholder="Search product..." class="searchInput">
+    <section id="addProductSection" class="hidden">
+      <form id="productForm">
+        <input type="text" id="productName" placeholder="Product Name" required>
+        <input type="text" id="productCategory" placeholder="Category" required>
+        <input type="number" id="productQuantity" placeholder="Quantity" required>
+        <input type="number" id="productPrice" placeholder="Price" required>
+        <button type="submit">Save Product</button>
+      </form>
+    </section>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Category</th><th>Quantity</th><th>Price</th><th>Status</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="productTable"></tbody>
+    </table>
+  </section>
+
+  <!-- Reports -->
+  <section id="reportsContent" class="hidden">
+    <h2>Reports</h2>
+    <div class="cards">
+      <div class="card">Total Inventory Value: <span id="reportTotalValue">$0.00</span></div>
+      <div class="card">Average Product Price: <span id="reportAvgPrice">$0.00</span></div>
+      <div class="card">Total Products: <span id="reportTotalProducts">0</span></div>
+    </div>
+    <p>Charts and analytics are also available on the Dashboard.</p>
+  </section>
+
+  <!-- Settings -->
+  <section id="settingsContent" class="hidden">
+    <h2>Settings</h2>
+    <label>Change Display Name:</label>
+    <input type="text" id="changeName" placeholder="Enter new name">
+    <button id="saveSettings">Save Name</button><br><br>
+
+    <label>Change Password:</label>
+    <input type="password" id="changePassword" placeholder="New Password">
+    <button id="savePassword">Save Password</button><br><br>
+
+    <button id="clearProducts">Clear All Products</button>
+    <button id="resetSystem">Reset System</button><br><br>
+
+    <label>Toggle Dark Mode:</label>
+    <button id="toggleDark">Toggle Dark Mode</button>
+  </section>
+</main>
+</div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
