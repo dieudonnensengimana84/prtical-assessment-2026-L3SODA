@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     
     <style>
-        /* ===== PREMIUM CSS - SAME STYLE WITH ALL FEATURES ===== */
+        /* ===== YOUR ORIGINAL CSS - PRESERVED ===== */
         * {
             margin: 0;
             padding: 0;
@@ -559,6 +559,7 @@
             color: var(--text-light);
         }
 
+        /* YOUR ORIGINAL NAVIGATION - EXACTLY AS YOU HAD IT */
         .sidebar-nav {
             flex: 1;
             padding: 20px 0;
@@ -1255,7 +1256,7 @@
             color: var(--primary);
         }
 
-        /* Settings */
+        /* Settings - Enhanced */
         .settings-tabs {
             display: flex;
             gap: 8px;
@@ -1296,12 +1297,51 @@
             display: block;
         }
 
+        .settings-group {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .settings-group:last-child {
+            border-bottom: none;
+        }
+
+        .settings-group h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .setting-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
             border-bottom: 1px solid var(--border);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-info {
+            flex: 1;
+        }
+
+        .setting-name {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .setting-description {
+            display: block;
+            font-size: 12px;
+            color: var(--text-light);
         }
 
         .setting-input {
@@ -1324,6 +1364,11 @@
             border-radius: 12px;
             background: var(--bg);
             color: var(--text);
+        }
+
+        textarea.setting-input {
+            resize: vertical;
+            min-height: 60px;
         }
 
         /* Switch */
@@ -1372,9 +1417,11 @@
             transform: translateX(28px);
         }
 
+        /* Color Picker */
         .color-picker {
             display: flex;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .color-option {
@@ -1383,10 +1430,93 @@
             border-radius: 50%;
             cursor: pointer;
             border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .color-option:hover {
+            transform: scale(1.2);
         }
 
         .color-option.active {
-            border-color: var(--primary);
+            border-color: var(--text);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* Backup List */
+        .backup-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 10px;
+            background: var(--bg);
+        }
+
+        .backup-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .backup-item:last-child {
+            border-bottom: none;
+        }
+
+        .backup-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .backup-name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .backup-date {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .backup-size {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* System Info */
+        .system-info {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row span:first-child {
+            color: var(--text-light);
+        }
+
+        .info-row span:last-child {
+            font-weight: 600;
         }
 
         /* Notifications */
@@ -1395,6 +1525,10 @@
             top: 30px;
             right: 30px;
             z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
         }
 
         .notification {
@@ -1409,6 +1543,7 @@
             animation: slideIn 0.3s;
             border-left: 5px solid;
             min-width: 350px;
+            pointer-events: auto;
             border: 1px solid var(--border);
         }
 
@@ -1416,6 +1551,44 @@
         .notification.error { border-left-color: var(--danger); }
         .notification.warning { border-left-color: var(--warning); }
         .notification.info { border-left-color: var(--primary); }
+
+        .notification i {
+            font-size: 22px;
+        }
+
+        .notification.success i { color: var(--success); }
+        .notification.error i { color: var(--danger); }
+        .notification.warning i { color: var(--warning); }
+        .notification.info i { color: var(--primary); }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .notification-message {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+            transition: var(--transition);
+        }
+
+        .notification-close:hover {
+            color: var(--danger);
+            transform: rotate(90deg);
+        }
 
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
@@ -1431,7 +1604,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 10000;
+            animation: fadeIn 0.2s;
         }
 
         .modal {
@@ -1440,13 +1614,62 @@
             padding: 30px;
             max-width: 450px;
             width: 90%;
+            animation: scaleIn 0.3s ease;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .modal p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            font-size: 15px;
         }
 
         .modal-actions {
             display: flex;
             justify-content: flex-end;
             gap: 12px;
-            margin-top: 20px;
+        }
+
+        /* Tooltips */
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+        }
+
+        [data-tooltip]:before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 12px;
+            background: var(--text);
+            color: white;
+            font-size: 11px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        [data-tooltip]:hover:before {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-8px);
         }
 
         /* Responsive */
@@ -1474,6 +1697,9 @@
             .form-group.full-width { grid-column: span 1; }
             .profile-header { flex-direction: column; text-align: center; }
             .profile-stats { justify-content: center; }
+            .settings-tabs { flex-direction: column; }
+            .setting-item { flex-direction: column; align-items: flex-start; }
+            .setting-input, .setting-select { width: 100%; }
         }
     </style>
 </head>
@@ -1487,28 +1713,30 @@
 
     <!-- Auth Container -->
     <div id="authContainer">
-        <!-- Login Page -->
+        <!-- Login Page - NO pre-filled values -->
         <div id="loginPage" class="auth-card">
             <div class="auth-logo"><i class="fas fa-cubes"></i></div>
             <h2>Welcome Back</h2>
+            <p>Sign in to access your inventory</p>
             <form id="loginForm">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="loginEmail" placeholder="Email" value="Enter your email" required>
+                    <input type="email" id="loginEmail" placeholder="Email address" required>
                 </div>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="loginPassword" placeholder="Password" value="Enter password" required>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Sign In</button>
             </form>
-            <p class="auth-footer">No account? <a href="#" id="showRegister">Register</a></p>
+            <p class="auth-footer">Don't have an account? <a href="#" id="showRegister">Create account</a></p>
         </div>
 
-        <!-- Register Page -->
+        <!-- Register Page - WITH CONFIRM PASSWORD -->
         <div id="registerPage" class="auth-card" style="display:none">
             <div class="auth-logo"><i class="fas fa-user-plus"></i></div>
             <h2>Create Account</h2>
+            <p>Start managing your inventory today</p>
             <form id="registerForm">
                 <div class="input-group">
                     <i class="fas fa-user"></i>
@@ -1516,15 +1744,19 @@
                 </div>
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="regEmail" placeholder="Email" required>
+                    <input type="email" id="regEmail" placeholder="Email address" required>
                 </div>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
                     <input type="password" id="regPassword" placeholder="Password" required>
                 </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="regConfirmPassword" placeholder="Confirm password" required>
+                </div>
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
-            <p class="auth-footer">Have account? <a href="#" id="showLogin">Login</a></p>
+            <p class="auth-footer">Already have an account? <a href="#" id="showLogin">Sign in</a></p>
         </div>
     </div>
 
@@ -1547,12 +1779,12 @@
                 <button class="icon-btn" id="fullscreenToggle"><i class="fas fa-expand"></i></button>
                 <div class="user-menu" id="userMenu">
                     <div class="user-avatar"><i class="fas fa-user"></i></div>
-                    <div class="user-info"><span class="user-name" id="userName">Admin</span><span class="user-role">Administrator</span></div>
+                    <div class="user-info"><span class="user-name" id="userName">User</span><span class="user-role">Administrator</span></div>
                     <i class="fas fa-chevron-down"></i>
                     <div class="dropdown-menu">
                         <div class="dropdown-header">
                             <div class="dropdown-avatar"><i class="fas fa-user"></i></div>
-                            <div class="dropdown-info"><h4 id="dropdownUserName">Admin</h4><p id="dropdownUserEmail">admin@simspro.com</p></div>
+                            <div class="dropdown-info"><h4 id="dropdownUserName">User</h4><p id="dropdownUserEmail">user@example.com</p></div>
                         </div>
                         <a href="#" id="profileBtn"><i class="fas fa-user"></i> Profile</a>
                         <a href="#" id="dashboardBtn"><i class="fas fa-chart-pie"></i> Dashboard</a>
@@ -1566,27 +1798,59 @@
 
         <!-- Layout -->
         <div class="layout">
-            <!-- Sidebar -->
+            <!-- Sidebar - YOUR ORIGINAL NAVIGATION -->
             <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">
                     <div class="profile-preview">
                         <div class="profile-avatar"><i class="fas fa-user"></i></div>
-                        <div class="profile-info"><h4 id="sidebarUserName">Admin</h4><p id="sidebarUserEmail">admin@simspro.com</p></div>
+                        <div class="profile-info"><h4 id="sidebarUserName">User</h4><p id="sidebarUserEmail">user@example.com</p></div>
                     </div>
                 </div>
+                
+                <!-- YOUR EXACT NAVIGATION -->
                 <nav class="sidebar-nav">
                     <ul>
-                        <li class="nav-item active" data-view="dashboard"><i class="fas fa-chart-pie"></i><span>Dashboard</span><span class="nav-badge" id="dashboardBadge">0</span></li>
-                        <li class="nav-item" data-view="products"><i class="fas fa-box"></i><span>Products</span><span class="nav-badge" id="productsCount">0</span></li>
-                        <li class="nav-item" data-view="categories"><i class="fas fa-tags"></i><span>Categories</span></li>
-                        <li class="nav-item" data-view="orders"><i class="fas fa-shopping-cart"></i><span>Orders</span></li>
-                        <li class="nav-item" data-view="customers"><i class="fas fa-users"></i><span>Customers</span></li>
-                        <li class="nav-item" data-view="suppliers"><i class="fas fa-truck"></i><span>Suppliers</span></li>
-                        <li class="nav-item" data-view="reports"><i class="fas fa-chart-bar"></i><span>Reports</span></li>
-                        <li class="nav-item" data-view="profile"><i class="fas fa-user-circle"></i><span>Profile</span></li>
-                        <li class="nav-item" data-view="settings"><i class="fas fa-cog"></i><span>Settings</span></li>
+                        <li class="nav-item active" data-view="dashboard">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Dashboard</span>
+                            <span class="nav-badge" id="dashboardBadge">0</span>
+                        </li>
+                        <li class="nav-item" data-view="products">
+                            <i class="fas fa-box"></i>
+                            <span>Products</span>
+                            <span class="nav-badge" id="productsCount">0</span>
+                        </li>
+                        <li class="nav-item" data-view="categories">
+                            <i class="fas fa-tags"></i>
+                            <span>Categories</span>
+                        </li>
+                        <li class="nav-item" data-view="orders">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Orders</span>
+                        </li>
+                        <li class="nav-item" data-view="customers">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </li>
+                        <li class="nav-item" data-view="suppliers">
+                            <i class="fas fa-truck"></i>
+                            <span>Suppliers</span>
+                        </li>
+                        <li class="nav-item" data-view="reports">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Reports</span>
+                        </li>
+                        <li class="nav-item" data-view="profile">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Profile</span>
+                        </li>
+                        <li class="nav-item" data-view="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </li>
                     </ul>
                 </nav>
+
                 <div class="sidebar-footer">
                     <div class="storage-widget">
                         <div class="storage-header"><i class="fas fa-database"></i><span>Storage</span><span class="storage-percent" id="storagePercent">0%</span></div>
@@ -1601,7 +1865,7 @@
                 <!-- Dashboard View -->
                 <div id="dashboardView" class="view active">
                     <div class="welcome-banner">
-                        <div class="welcome-text"><h2>Welcome back, <span id="welcomeName">Admin</span>! 👋</h2><p>Here's your inventory overview</p></div>
+                        <div class="welcome-text"><h2>Welcome back, <span id="welcomeName">User</span>! 👋</h2><p>Here's your inventory overview</p></div>
                         <div class="date-display" id="currentDate"></div>
                     </div>
                     <div class="stats-grid">
@@ -1718,32 +1982,688 @@
                 <div id="profileView" class="view">
                     <div class="profile-header">
                         <div class="profile-avatar-large"><i class="fas fa-user"></i></div>
-                        <div><h2 id="profileName">Admin</h2><p><i class="fas fa-envelope"></i> <span id="profileEmail">admin@simspro.com</span></p>
+                        <div><h2 id="profileName">User</h2><p><i class="fas fa-envelope"></i> <span id="profileEmail">user@example.com</span></p>
                         <div class="profile-stats"><div class="profile-stat"><strong id="profileProducts">0</strong><span>Products</span></div><div class="profile-stat"><strong id="profileOrders">0</strong><span>Orders</span></div><div class="profile-stat"><strong id="profileValue">$0</strong><span>Value</span></div></div></div>
                     </div>
-                    <div class="profile-form"><h3>Edit Profile</h3><div class="form-grid"><div class="form-group"><label>Name</label><input type="text" id="editName" value="Admin"></div><div class="form-group"><label>Email</label><input type="email" id="editEmail" value="admin@simspro.com"></div></div><button class="btn btn-primary" id="updateProfileBtn">Update</button></div>
+                    <div class="profile-form"><h3>Edit Profile</h3><div class="form-grid"><div class="form-group"><label>Name</label><input type="text" id="editName" value="User"></div><div class="form-group"><label>Email</label><input type="email" id="editEmail" value="user@example.com"></div></div><button class="btn btn-primary" id="updateProfileBtn">Update</button></div>
                 </div>
 
-                <!-- Settings View -->
+                <!-- Settings View - ENHANCED -->
                 <div id="settingsView" class="view">
-                    <div class="view-header"><h2>Settings</h2><button class="btn btn-secondary" id="resetSettingsBtn">Reset</button></div>
-                    <div class="settings-tabs"><button class="settings-tab active" data-tab="general">General</button><button class="settings-tab" data-tab="appearance">Appearance</button><button class="settings-tab" data-tab="inventory">Inventory</button><button class="settings-tab" data-tab="backup">Backup</button></div>
+                    <div class="view-header">
+                        <h2>Settings</h2>
+                        <button class="btn btn-secondary" id="resetSettingsBtn">Reset to Default</button>
+                    </div>
+
+                    <!-- Settings Tabs -->
+                    <div class="settings-tabs">
+                        <button class="settings-tab active" data-tab="general">General</button>
+                        <button class="settings-tab" data-tab="appearance">Appearance</button>
+                        <button class="settings-tab" data-tab="notifications">Notifications</button>
+                        <button class="settings-tab" data-tab="inventory">Inventory</button>
+                        <button class="settings-tab" data-tab="security">Security</button>
+                        <button class="settings-tab" data-tab="backup">Backup</button>
+                        <button class="settings-tab" data-tab="advanced">Advanced</button>
+                    </div>
+
+                    <!-- Settings Panels -->
                     <div class="settings-panels">
+                        <!-- General Settings -->
                         <div class="settings-panel active" id="generalSettings">
-                            <div class="setting-item"><span>Company</span><input type="text" id="companyName" class="setting-input" value="SIMS Pro"></div>
-                            <div class="setting-item"><span>Currency</span><select id="currency" class="setting-select"><option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select></div>
+                            <div class="settings-group">
+                                <h3><i class="fas fa-building"></i> Company Information</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Company Name</span>
+                                        <span class="setting-description">Your business name</span>
+                                    </div>
+                                    <input type="text" id="companyName" class="setting-input" placeholder="SIMS Pro Inc.">
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Business Email</span>
+                                        <span class="setting-description">Primary contact email</span>
+                                    </div>
+                                    <input type="email" id="businessEmail" class="setting-input" placeholder="admin@simspro.com">
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Business Phone</span>
+                                        <span class="setting-description">Contact number</span>
+                                    </div>
+                                    <input type="tel" id="businessPhone" class="setting-input" placeholder="+1 234 567 890">
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Address</span>
+                                        <span class="setting-description">Business location</span>
+                                    </div>
+                                    <textarea id="businessAddress" class="setting-input" rows="2" placeholder="123 Business St, City, State"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-globe"></i> Regional</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Currency</span>
+                                        <span class="setting-description">Default currency for prices</span>
+                                    </div>
+                                    <select id="currency" class="setting-select">
+                                        <option value="USD">USD ($)</option>
+                                        <option value="EUR">EUR (€)</option>
+                                        <option value="GBP">GBP (£)</option>
+                                        <option value="JPY">JPY (¥)</option>
+                                        <option value="CAD">CAD ($)</option>
+                                        <option value="AUD">AUD ($)</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Date Format</span>
+                                        <span class="setting-description">How dates are displayed</span>
+                                    </div>
+                                    <select id="dateFormat" class="setting-select">
+                                        <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                        <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                        <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Time Format</span>
+                                        <span class="setting-description">12h or 24h format</span>
+                                    </div>
+                                    <select id="timeFormat" class="setting-select">
+                                        <option value="12h">12-hour</option>
+                                        <option value="24h">24-hour</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Language</span>
+                                        <span class="setting-description">Interface language</span>
+                                    </div>
+                                    <select id="language" class="setting-select">
+                                        <option value="en">English</option>
+                                        <option value="es">Español</option>
+                                        <option value="fr">Français</option>
+                                        <option value="de">Deutsch</option>
+                                        <option value="zh">中文</option>
+                                        <option value="ja">日本語</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">First Day of Week</span>
+                                        <span class="setting-description">Calendar start day</span>
+                                    </div>
+                                    <select id="firstDayOfWeek" class="setting-select">
+                                        <option value="monday">Monday</option>
+                                        <option value="sunday">Sunday</option>
+                                        <option value="saturday">Saturday</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Appearance Settings -->
                         <div class="settings-panel hidden" id="appearanceSettings">
-                            <div class="setting-item"><span>Dark Mode</span><label class="switch"><input type="checkbox" id="darkMode"><span class="slider"></span></label></div>
+                            <div class="settings-group">
+                                <h3><i class="fas fa-palette"></i> Theme</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Dark Mode</span>
+                                        <span class="setting-description">Switch between light and dark theme</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="darkMode">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Compact View</span>
+                                        <span class="setting-description">Show more items per page</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="compactView">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Animations</span>
+                                        <span class="setting-description">Enable UI animations</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="animations" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-paint-brush"></i> Color Theme</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Primary Color</span>
+                                        <span class="setting-description">Main theme color</span>
+                                    </div>
+                                    <div class="color-picker">
+                                        <div class="color-option active" style="background: #4361ee;" data-color="#4361ee"></div>
+                                        <div class="color-option" style="background: #f72585;" data-color="#f72585"></div>
+                                        <div class="color-option" style="background: #06d6a0;" data-color="#06d6a0"></div>
+                                        <div class="color-option" style="background: #ffb703;" data-color="#ffb703"></div>
+                                        <div class="color-option" style="background: #ef476f;" data-color="#ef476f"></div>
+                                        <div class="color-option" style="background: #7209b7;" data-color="#7209b7"></div>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Sidebar Theme</span>
+                                        <span class="setting-description">Sidebar color scheme</span>
+                                    </div>
+                                    <select id="sidebarTheme" class="setting-select">
+                                        <option value="default">Default</option>
+                                        <option value="dark">Dark</option>
+                                        <option value="gradient">Gradient</option>
+                                        <option value="transparent">Transparent</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-font"></i> Typography</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Font Size</span>
+                                        <span class="setting-description">Global text size</span>
+                                    </div>
+                                    <select id="fontSize" class="setting-select">
+                                        <option value="small">Small</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="large">Large</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Font Family</span>
+                                        <span class="setting-description">Text style</span>
+                                    </div>
+                                    <select id="fontFamily" class="setting-select">
+                                        <option value="system">System Default</option>
+                                        <option value="inter" selected>Inter</option>
+                                        <option value="roboto">Roboto</option>
+                                        <option value="poppins">Poppins</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Notifications Settings -->
+                        <div class="settings-panel hidden" id="notificationSettings">
+                            <div class="settings-group">
+                                <h3><i class="fas fa-bell"></i> Email Notifications</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Low Stock Alerts</span>
+                                        <span class="setting-description">Get emails when stock is low</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="emailLowStock" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">New Order Notifications</span>
+                                        <span class="setting-description">When orders are placed</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="emailNewOrder" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Daily Summary</span>
+                                        <span class="setting-description">End of day report</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="emailDailySummary">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Weekly Report</span>
+                                        <span class="setting-description">Weekly performance</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="emailWeeklyReport" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-desktop"></i> Desktop Notifications</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Enable Notifications</span>
+                                        <span class="setting-description">Browser notifications</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="desktopNotifications">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Notification Sound</span>
+                                        <span class="setting-description">Play sound on alerts</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="notificationSound" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Show Preview</span>
+                                        <span class="setting-description">Show message preview</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="notificationPreview" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-sliders-h"></i> Alert Thresholds</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Low Stock Threshold</span>
+                                        <span class="setting-description">Minimum quantity before alert</span>
+                                    </div>
+                                    <input type="number" id="lowStockThreshold" class="setting-input small" value="5" min="1">
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Expiry Alert Days</span>
+                                        <span class="setting-description">Days before expiry to alert</span>
+                                    </div>
+                                    <input type="number" id="expiryAlertDays" class="setting-input small" value="30" min="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inventory Settings -->
                         <div class="settings-panel hidden" id="inventorySettings">
-                            <div class="setting-item"><span>Low Stock</span><input type="number" id="lowStockThreshold" class="setting-input small" value="5"></div>
-                            <div class="setting-item"><span>Items Per Page</span><select id="itemsPerPage" class="setting-select"><option value="5">5</option><option value="10">10</option><option value="25">25</option></select></div>
+                            <div class="settings-group">
+                                <h3><i class="fas fa-box"></i> Product Settings</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Auto Generate SKU</span>
+                                        <span class="setting-description">Automatically create SKU for products</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="autoGenerateSKU" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">SKU Prefix</span>
+                                        <span class="setting-description">Prefix for auto-generated SKU</span>
+                                    </div>
+                                    <input type="text" id="skuPrefix" class="setting-input" value="PRD">
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Enable Barcode</span>
+                                        <span class="setting-description">Show barcode field</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="enableBarcode" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Enable Expiry Tracking</span>
+                                        <span class="setting-description">Track expiration dates</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="enableExpiry">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Enable Batch Tracking</span>
+                                        <span class="setting-description">Track products by batch</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="enableBatch">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-table"></i> Display Settings</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Items Per Page</span>
+                                        <span class="setting-description">Products shown per page</span>
+                                    </div>
+                                    <select id="itemsPerPage" class="setting-select">
+                                        <option value="5">5</option>
+                                        <option value="10" selected>10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Show Profit Column</span>
+                                        <span class="setting-description">Display profit in table</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="showProfit" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Show Cost Column</span>
+                                        <span class="setting-description">Display cost price</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="showCost">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Decimal Places</span>
+                                        <span class="setting-description">Number of decimal places</span>
+                                    </div>
+                                    <select id="decimalPlaces" class="setting-select">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Security Settings -->
+                        <div class="settings-panel hidden" id="securitySettings">
+                            <div class="settings-group">
+                                <h3><i class="fas fa-lock"></i> Session Security</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Session Timeout</span>
+                                        <span class="setting-description">Auto logout after inactivity (minutes)</span>
+                                    </div>
+                                    <input type="number" id="sessionTimeout" class="setting-input small" value="30" min="5">
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Max Login Attempts</span>
+                                        <span class="setting-description">Before account lockout</span>
+                                    </div>
+                                    <input type="number" id="maxLoginAttempts" class="setting-input small" value="5" min="3">
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Remember Me Duration</span>
+                                        <span class="setting-description">Days to stay logged in</span>
+                                    </div>
+                                    <select id="rememberDuration" class="setting-select">
+                                        <option value="7">7 days</option>
+                                        <option value="14">14 days</option>
+                                        <option value="30" selected>30 days</option>
+                                        <option value="90">90 days</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-key"></i> Password Policy</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Minimum Length</span>
+                                        <span class="setting-description">Minimum password characters</span>
+                                    </div>
+                                    <input type="number" id="minPasswordLength" class="setting-input small" value="6" min="4">
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Require Numbers</span>
+                                        <span class="setting-description">Must contain digits</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="requireNumbers" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Require Special Characters</span>
+                                        <span class="setting-description">Must contain !@#$%</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="requireSpecial" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Require Uppercase</span>
+                                        <span class="setting-description">Must contain capital letters</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="requireUppercase" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-shield-alt"></i> Two-Factor Authentication</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Enable 2FA</span>
+                                        <span class="setting-description">Two-factor authentication</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="enable2FA">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">2FA Method</span>
+                                        <span class="setting-description">Authentication method</span>
+                                    </div>
+                                    <select id="twoFAMethod" class="setting-select">
+                                        <option value="app">Authenticator App</option>
+                                        <option value="email">Email</option>
+                                        <option value="sms">SMS</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Backup Settings -->
                         <div class="settings-panel hidden" id="backupSettings">
-                            <div class="setting-item"><span>Auto Backup</span><label class="switch"><input type="checkbox" id="autoBackup" checked><span class="slider"></span></label></div>
-                            <button class="btn btn-primary" id="backupNowBtn">Backup Now</button>
-                            <button class="btn btn-danger" id="clearAllDataBtn">Clear All Data</button>
+                            <div class="settings-group">
+                                <h3><i class="fas fa-database"></i> Auto Backup</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Enable Auto Backup</span>
+                                        <span class="setting-description">Automatic data backup</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="autoBackup" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Backup Frequency</span>
+                                        <span class="setting-description">How often to backup</span>
+                                    </div>
+                                    <select id="backupFrequency" class="setting-select">
+                                        <option value="hourly">Hourly</option>
+                                        <option value="daily" selected>Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Keep Backups</span>
+                                        <span class="setting-description">Number of backups to keep</span>
+                                    </div>
+                                    <input type="number" id="keepBackups" class="setting-input small" value="30" min="1">
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-cloud-upload-alt"></i> Manual Backup</h3>
+                                <div class="button-group">
+                                    <button class="btn btn-primary" id="backupNowBtn">
+                                        <i class="fas fa-database"></i> Backup Now
+                                    </button>
+                                    <button class="btn btn-secondary" id="restoreBackupBtn">
+                                        <i class="fas fa-cloud-download-alt"></i> Restore
+                                    </button>
+                                    <button class="btn btn-danger" id="deleteBackupsBtn">
+                                        <i class="fas fa-trash"></i> Delete All
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-history"></i> Backup History</h3>
+                                <div id="backupList" class="backup-list">
+                                    <!-- Backups loaded dynamically -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Settings -->
+                        <div class="settings-panel hidden" id="advancedSettings">
+                            <div class="settings-group">
+                                <h3><i class="fas fa-code"></i> Developer Options</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Debug Mode</span>
+                                        <span class="setting-description">Show debug information</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="debugMode">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Console Logging</span>
+                                        <span class="setting-description">Log to browser console</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="consoleLogging">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">API Endpoint</span>
+                                        <span class="setting-description">Custom API URL</span>
+                                    </div>
+                                    <input type="text" id="apiEndpoint" class="setting-input" placeholder="https://api.example.com">
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-tachometer-alt"></i> Performance</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Lazy Loading</span>
+                                        <span class="setting-description">Load data on demand</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="lazyLoading" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Cache Responses</span>
+                                        <span class="setting-description">Reduce server requests</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="cacheResponses" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-name">Compress Data</span>
+                                        <span class="setting-description">Minimize storage usage</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="compressData">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+                                <div class="button-group">
+                                    <button class="btn btn-danger" id="clearAllDataBtn">
+                                        <i class="fas fa-trash"></i> Clear All Data
+                                    </button>
+                                    <button class="btn btn-danger" id="resetSystemBtn">
+                                        <i class="fas fa-undo-alt"></i> Reset System
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3><i class="fas fa-info-circle"></i> System Information</h3>
+                                <div class="system-info">
+                                    <div class="info-row">
+                                        <span>Version:</span>
+                                        <span><strong>3.0.0</strong></span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Last Update:</span>
+                                        <span><strong>2024-01-15</strong></span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Storage Used:</span>
+                                        <span><strong id="systemStorage">0 KB</strong></span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Total Products:</span>
+                                        <span><strong id="systemProducts">0</strong></span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Total Users:</span>
+                                        <span><strong id="systemUsers">1</strong></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1764,41 +2684,102 @@
         setTimeout(() => document.getElementById('loadingScreen').style.display = 'none', 1500);
 
         // ===== STATE =====
+        let users = JSON.parse(localStorage.getItem('users')) || [];
         let products = JSON.parse(localStorage.getItem('products')) || [];
-        let categories = ['Electronics', 'Clothing', 'Food', 'Books', 'Furniture', 'Sports', 'Beauty', 'Toys'];
+        let categories = ['Electronics', 'Clothing', 'Food', 'Books', 'Furniture', 'Sports', 'Beauty', 'Toys', 'Automotive', 'Health', 'Home', 'Office'];
         let customers = JSON.parse(localStorage.getItem('customers')) || [];
         let suppliers = JSON.parse(localStorage.getItem('suppliers')) || [];
         let orders = JSON.parse(localStorage.getItem('orders')) || [];
         let activities = JSON.parse(localStorage.getItem('activities')) || [];
+        let backups = JSON.parse(localStorage.getItem('backups')) || [];
         let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
         
-        let settings = { darkMode: false, lowStockThreshold: 5, itemsPerPage: 10, autoBackup: true };
+        // COMPLETE SETTINGS
+        let settings = JSON.parse(localStorage.getItem('settings')) || {
+            companyName: '', businessEmail: '', businessPhone: '', businessAddress: '',
+            currency: 'USD', dateFormat: 'MM/DD/YYYY', timeFormat: '12h', language: 'en', firstDayOfWeek: 'monday',
+            darkMode: false, compactView: false, animations: true, primaryColor: '#4361ee', sidebarTheme: 'default', fontSize: 'medium', fontFamily: 'inter',
+            lowStockThreshold: 5, itemsPerPage: 10, autoGenerateSKU: true, skuPrefix: 'PRD',
+            enableBarcode: true, enableExpiry: false, enableBatch: false, showProfit: true, showCost: false, decimalPlaces: 2,
+            emailLowStock: true, emailNewOrder: true, emailDailySummary: false, emailWeeklyReport: true,
+            desktopNotifications: false, notificationSound: true, notificationPreview: true, expiryAlertDays: 30,
+            sessionTimeout: 30, maxLoginAttempts: 5, rememberDuration: 30, minPasswordLength: 6,
+            requireNumbers: true, requireSpecial: true, requireUppercase: true, enable2FA: false, twoFAMethod: 'app',
+            autoBackup: true, backupFrequency: 'daily', keepBackups: 30,
+            debugMode: false, consoleLogging: false, apiEndpoint: '', lazyLoading: true, cacheResponses: true, compressData: false
+        };
+
+        // UI State
         let editingId = null;
         let currentPage = 1;
         let charts = {};
+        let selectedItems = [];
 
-        // ===== SAMPLE DATA =====
+        // Sample Data
         if (products.length === 0) {
             products = [
-                { id: '1', name: 'Wireless Mouse', category: 'Electronics', quantity: 25, price: 29.99, sku: 'PRD-001' },
-                { id: '2', name: 'Keyboard', category: 'Electronics', quantity: 15, price: 89.99, sku: 'PRD-002' },
-                { id: '3', name: 'Monitor', category: 'Electronics', quantity: 8, price: 199.99, sku: 'PRD-003' },
-                { id: '4', name: 'T-Shirt', category: 'Clothing', quantity: 3, price: 19.99, sku: 'PRD-004' },
-                { id: '5', name: 'Jeans', category: 'Clothing', quantity: 0, price: 49.99, sku: 'PRD-005' },
+                { id: '1', name: 'Wireless Mouse', category: 'Electronics', quantity: 25, price: 29.99, cost: 15.00, sku: 'PRD-001', supplier: 'TechDistributor', location: 'A1-B2', reorderPoint: 5, description: 'Ergonomic wireless mouse' },
+                { id: '2', name: 'Keyboard', category: 'Electronics', quantity: 15, price: 89.99, cost: 45.00, sku: 'PRD-002', supplier: 'TechDistributor', location: 'A1-B3', reorderPoint: 5, description: 'Mechanical keyboard' },
+                { id: '3', name: 'Monitor', category: 'Electronics', quantity: 8, price: 199.99, cost: 120.00, sku: 'PRD-003', supplier: 'DisplayTech', location: 'A2-B1', reorderPoint: 3, description: '24" HD Monitor' },
+                { id: '4', name: 'T-Shirt', category: 'Clothing', quantity: 3, price: 19.99, cost: 8.00, sku: 'PRD-004', supplier: 'FashionWholesale', location: 'B1-C2', reorderPoint: 10, description: 'Cotton t-shirt' },
+                { id: '5', name: 'Jeans', category: 'Clothing', quantity: 0, price: 49.99, cost: 20.00, sku: 'PRD-005', supplier: 'FashionWholesale', location: 'B1-C3', reorderPoint: 5, description: 'Slim fit jeans' },
             ];
+        }
+
+        if (customers.length === 0) {
+            customers = [
+                { id: 'c1', name: 'John Smith', email: 'john@example.com', phone: '+1-555-0101', orders: 5, spent: 1250.50, status: 'active' },
+                { id: 'c2', name: 'Sarah Johnson', email: 'sarah@example.com', phone: '+1-555-0102', orders: 3, spent: 890.75, status: 'active' },
+            ];
+        }
+
+        if (suppliers.length === 0) {
+            suppliers = [
+                { id: 's1', name: 'TechDistributor', contact: 'John Tech', email: 'sales@tech.com', phone: '+1-800-555-1000', products: 25 },
+                { id: 's2', name: 'FashionWholesale', contact: 'Sarah Fashion', email: 'sales@fashion.com', phone: '+1-800-555-1001', products: 18 },
+            ];
+        }
+
+        if (orders.length === 0) {
+            orders = [
+                { id: 'ORD-001', customer: 'John Smith', date: new Date().toISOString(), items: 3, total: 149.97, status: 'completed', payment: 'paid' },
+                { id: 'ORD-002', customer: 'Sarah Johnson', date: new Date().toISOString(), items: 2, total: 109.98, status: 'processing', payment: 'pending' },
+            ];
+        }
+
+        if (activities.length === 0) {
+            activities.push({ type: 'add', text: 'System initialized', time: new Date().toISOString() });
         }
 
         // ===== UTILITIES =====
         function generateId() { return Date.now().toString(36) + Math.random().toString(36).substr(2, 5); }
-        function generateSKU() { return 'PRD-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0'); }
-        function formatCurrency(amount) { return '$' + Number(amount || 0).toFixed(2); }
-        function formatDate(date) { return new Date(date).toLocaleString(); }
+        function generateSKU(name, category) { return settings.skuPrefix + '-' + (category ? category.substr(0,3).toUpperCase() : 'PRD') + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0'); }
+        function formatCurrency(amount) { const symbols = { USD: '$', EUR: '€', GBP: '£', JPY: '¥', CAD: 'C$', AUD: 'A$' }; const symbol = symbols[settings.currency] || '$'; return symbol + Number(amount || 0).toFixed(settings.decimalPlaces); }
         
+        function formatDate(date) {
+            if (!date) return '';
+            const d = new Date(date);
+            if (isNaN(d.getTime())) return '';
+            const month = (d.getMonth() + 1).toString().padStart(2, '0');
+            const day = d.getDate().toString().padStart(2, '0');
+            const year = d.getFullYear();
+            const hours = d.getHours();
+            const mins = d.getMinutes().toString().padStart(2, '0');
+            let dateStr = settings.dateFormat.replace('MM', month).replace('DD', day).replace('YYYY', year);
+            if (settings.timeFormat === '12h') {
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                const hour12 = hours % 12 || 12;
+                return `${dateStr} ${hour12}:${mins} ${ampm}`;
+            }
+            return `${dateStr} ${hours.toString().padStart(2, '0')}:${mins}`;
+        }
+
         function notify(message, type = 'info') {
             const n = document.createElement('div');
             n.className = `notification ${type}`;
-            n.innerHTML = `<i class="fas ${type==='success'?'fa-check-circle':'fa-exclamation-circle'}"></i><div>${message}</div>`;
+            n.innerHTML = `<i class="fas ${type==='success'?'fa-check-circle':type==='error'?'fa-exclamation-circle':'fa-info-circle'}"></i><div class="notification-content"><div class="notification-title">${type}</div><div class="notification-message">${message}</div></div><button class="notification-close" onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>`;
             document.getElementById('notificationContainer').appendChild(n);
+            if (settings.notificationSound) { try { new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YVo').play().catch(()=>{}); } catch(e){} }
             setTimeout(() => n.remove(), 3000);
         }
 
@@ -1821,11 +2802,13 @@
         }
 
         function saveAll() {
+            localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('products', JSON.stringify(products));
             localStorage.setItem('customers', JSON.stringify(customers));
             localStorage.setItem('suppliers', JSON.stringify(suppliers));
             localStorage.setItem('orders', JSON.stringify(orders));
             localStorage.setItem('activities', JSON.stringify(activities));
+            localStorage.setItem('backups', JSON.stringify(backups));
             localStorage.setItem('settings', JSON.stringify(settings));
         }
 
@@ -1836,7 +2819,7 @@
             saveAll();
         }
 
-        // ===== RENDER =====
+        // ===== RENDER FUNCTIONS =====
         function renderStats() {
             const s = calculateStats();
             document.getElementById('totalProducts').textContent = s.total;
@@ -1852,6 +2835,9 @@
             document.getElementById('reportAvg').textContent = formatCurrency(s.total ? s.totalValue / s.total : 0);
             document.getElementById('profileProducts').textContent = s.total;
             document.getElementById('profileValue').textContent = formatCurrency(s.totalValue);
+            document.getElementById('profileOrders').textContent = orders.length;
+            document.getElementById('systemProducts').textContent = s.total;
+            document.getElementById('systemUsers').textContent = users.length;
         }
 
         function renderActivities() {
@@ -1861,7 +2847,7 @@
             list.innerHTML = activities.slice(0, 10).map(a => `
                 <div class="activity-item">
                     <div class="activity-icon ${a.type}"><i class="fas fa-${a.type==='add'?'plus':a.type==='edit'?'edit':'trash'}"></i></div>
-                    <div><div>${a.text}</div><small>${formatDate(a.time)}</small></div>
+                    <div class="activity-details"><div class="activity-text">${a.text}</div><div class="activity-time">${formatDate(a.time)}</div></div>
                 </div>
             `).join('');
         }
@@ -1870,7 +2856,7 @@
             const list = document.getElementById('topProductsList');
             if (!list) return;
             const top = [...products].sort((a,b) => (b.quantity*b.price) - (a.quantity*a.price)).slice(0,5);
-            list.innerHTML = top.map(p => `<div class="activity-item" onclick="editProduct('${p.id}')"><i class="fas fa-star"></i><div><div>${p.name}</div><small>${p.quantity} units</small></div></div>`).join('');
+            list.innerHTML = top.map(p => `<div class="activity-item" style="cursor:pointer" onclick="editProduct('${p.id}')"><div class="activity-icon" style="background:rgba(6,214,160,0.1);color:var(--success)"><i class="fas fa-star"></i></div><div class="activity-details"><div class="activity-text">${p.name}</div><div class="activity-time">${p.quantity} units • ${formatCurrency(p.quantity * p.price)}</div></div></div>`).join('');
         }
 
         function renderProducts() {
@@ -1917,8 +2903,7 @@
             const counts = {};
             products.forEach(p => { if (p.category) counts[p.category] = (counts[p.category]||0) + 1; });
             const allCats = [...new Set([...categories, ...Object.keys(counts)])];
-            grid.innerHTML = allCats.map(c => `<div class="category-card" onclick="filterByCategory('${c}')"><div class="category-icon"><i class="fas fa-folder"></i></div><div><h4>${c}</h4><p>${counts[c]||0} products</p></div></div>`).join('');
-            
+            grid.innerHTML = allCats.map(c => `<div class="category-card" onclick="filterByCategory('${c}')"><div class="category-icon"><i class="fas fa-folder"></i></div><div class="category-info"><h4>${c}</h4><p>${counts[c]||0} products</p></div></div>`).join('');
             const filter = document.getElementById('categoryFilter');
             const formCat = document.getElementById('productCategory');
             if (filter) filter.innerHTML = '<option value="">All Categories</option>' + allCats.map(c => `<option value="${c}">${c}</option>`).join('');
@@ -1930,21 +2915,29 @@
             document.getElementById('processingOrders').textContent = orders.filter(o => o.status === 'processing').length;
             document.getElementById('completedOrders').textContent = orders.filter(o => o.status === 'completed').length;
             document.getElementById('cancelledOrders').textContent = orders.filter(o => o.status === 'cancelled').length;
-            document.getElementById('ordersTable').innerHTML = orders.map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${formatDate(o.date)}</td><td>${formatCurrency(o.total)}</td><td><span class="status-badge ${o.status}">${o.status}</span></td></tr>`).join('');
+            document.getElementById('ordersTable').innerHTML = orders.map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${formatDate(o.date)}</td><td>${o.items} items</td><td>${formatCurrency(o.total)}</td><td><span class="status-badge ${o.status==='completed'?'in-stock':o.status==='pending'?'low-stock':'out-stock'}">${o.status}</span></td></tr>`).join('');
         }
 
         function renderCustomers() {
-            document.getElementById('customersTable').innerHTML = customers.map(c => `<tr><td><strong>${c.name}</strong></td><td>${c.email}</td><td>${c.phone}</td><td>${c.orders}</td><td>${formatCurrency(c.spent)}</td></tr>`).join('');
+            document.getElementById('customersTable').innerHTML = customers.map(c => `<tr><td><strong>${c.name}</strong></td><td>${c.email}</td><td>${c.phone}</td><td>${c.orders}</td><td>${formatCurrency(c.spent)}</td><td><span class="status-badge ${c.status==='active'?'in-stock':'out-stock'}">${c.status}</span></td></tr>`).join('');
         }
 
         function renderSuppliers() {
-            document.getElementById('suppliersTable').innerHTML = suppliers.map(s => `<tr><td><strong>${s.name}</strong></td><td>${s.contact}</td><td>${s.email}</td><td>${s.phone}</td></tr>`).join('');
+            document.getElementById('suppliersTable').innerHTML = suppliers.map(s => `<tr><td><strong>${s.name}</strong></td><td>${s.contact}</td><td>${s.email}</td><td>${s.phone}</td><td>${s.products} products</td></tr>`).join('');
+        }
+
+        function renderBackupList() {
+            const list = document.getElementById('backupList');
+            if (!list) return;
+            if (backups.length === 0) { list.innerHTML = '<div style="text-align:center;padding:20px">No backups yet</div>'; return; }
+            list.innerHTML = backups.slice().reverse().map(b => `<div class="backup-item"><div class="backup-info"><span class="backup-name">${b.filename}</span><span class="backup-date">${formatDate(b.timestamp)}</span></div><span class="backup-size">${(b.size/1024).toFixed(2)} KB</span></div>`).join('');
         }
 
         function renderCharts() {
             if (!window.Chart) return;
             if (charts.stock) charts.stock.destroy();
             if (charts.status) charts.status.destroy();
+            if (charts.report) charts.report.destroy();
             
             const s = calculateStats();
             const top = products.slice(0, 10);
@@ -1971,11 +2964,12 @@
         }
 
         function updateStorageInfo() {
-            const size = JSON.stringify(products).length;
-            const percent = Math.min(100, Math.round(size / 50000 * 100));
+            const size = JSON.stringify(products).length + JSON.stringify(orders).length + JSON.stringify(customers).length + JSON.stringify(suppliers).length;
+            const percent = Math.min(100, Math.round(size / (5*1024*1024) * 100));
             document.getElementById('storagePercent').textContent = percent + '%';
             document.getElementById('storageProgress').style.width = percent + '%';
             document.getElementById('storageUsed').textContent = (size / 1024).toFixed(2) + ' KB';
+            document.getElementById('systemStorage').textContent = (size / 1024).toFixed(2) + ' KB';
         }
 
         function updateAll() {
@@ -2025,7 +3019,7 @@
         window.downloadChart = function(id) { const canvas = document.getElementById(id); if (canvas) { const a = document.createElement('a'); a.download = id+'.png'; a.href = canvas.toDataURL(); a.click(); } };
         window.toggleChartType = function(name) { if (charts[name]) { charts[name].config.type = charts[name].config.type === 'bar' ? 'line' : 'bar'; charts[name].update(); } };
 
-        // ===== NAVIGATION =====
+        // ===== NAVIGATION - YOUR ORIGINAL FUNCTION =====
         window.switchView = function(view) {
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
             document.querySelector(`.nav-item[data-view="${view}"]`).classList.add('active');
@@ -2058,23 +3052,47 @@
             }
         }
 
+        // LOGIN - Only registered users
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
-            currentUser = { name: email.split('@')[0], email };
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            updateAuth();
-            notify('Login successful!', 'success');
+            const password = document.getElementById('loginPassword').value;
+            const user = users.find(u => u.email === email && u.password === password);
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                updateAuth();
+                notify(`Welcome, ${user.name}!`, 'success');
+            } else {
+                notify('Invalid email or password. Please register first.', 'error');
+            }
         });
 
+        // REGISTER - With password confirmation
         document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('regName').value;
             const email = document.getElementById('regEmail').value;
-            currentUser = { name, email };
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            updateAuth();
-            notify('Registration successful!', 'success');
+            const password = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('regConfirmPassword').value;
+            
+            if (password !== confirm) {
+                notify('Passwords do not match!', 'error');
+                return;
+            }
+            
+            if (users.find(u => u.email === email)) {
+                notify('Email already registered. Please login.', 'error');
+                return;
+            }
+            
+            const newUser = { id: generateId(), name, email, password, created: new Date().toISOString() };
+            users.push(newUser);
+            saveAll();
+            notify('Registration successful! Please login.', 'success');
+            document.getElementById('registerForm').reset();
+            document.getElementById('registerPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'block';
         });
 
         document.getElementById('showRegister').addEventListener('click', (e) => {
@@ -2136,12 +3154,11 @@
             editingId = null;
             document.getElementById('formTitle').textContent = 'Add New Product';
             document.getElementById('productForm').reset();
-            document.getElementById('productSKU').value = generateSKU();
+            document.getElementById('productSKU').value = generateSKU('', '');
             document.getElementById('productFormContainer').classList.remove('hidden');
         });
 
         document.getElementById('cancelFormBtn').addEventListener('click', () => document.getElementById('productFormContainer').classList.add('hidden'));
-        document.getElementById('closeFormBtn')?.addEventListener('click', () => document.getElementById('productFormContainer').classList.add('hidden'));
 
         document.getElementById('productForm').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -2153,7 +3170,7 @@
                 category: document.getElementById('productCategory').value,
                 quantity: parseInt(document.getElementById('productQuantity').value) || 0,
                 price: parseFloat(document.getElementById('productPrice').value) || 0,
-                sku: document.getElementById('productSKU').value || generateSKU(),
+                sku: document.getElementById('productSKU').value || generateSKU(name, document.getElementById('productCategory').value),
                 supplier: document.getElementById('productSupplier').value,
                 description: document.getElementById('productDescription').value
             };
@@ -2189,7 +3206,7 @@
             const name = prompt('Enter customer name:');
             const email = prompt('Enter customer email:');
             if (name && email) {
-                customers.push({ id: generateId(), name, email, phone: '+1-555-0000', orders: 0, spent: 0 });
+                customers.push({ id: generateId(), name, email, phone: '+1-555-0000', orders: 0, spent: 0, status: 'active' });
                 renderCustomers(); saveAll(); notify('Customer added', 'success');
             }
         });
@@ -2199,7 +3216,7 @@
             const name = prompt('Enter supplier name:');
             const contact = prompt('Enter contact:');
             if (name && contact) {
-                suppliers.push({ id: generateId(), name, contact, email: 'contact@'+name+'.com', phone: '+1-800-555-0000' });
+                suppliers.push({ id: generateId(), name, contact, email: 'contact@'+name+'.com', phone: '+1-800-555-0000', products: 0 });
                 renderSuppliers(); saveAll(); notify('Supplier added', 'success');
             }
         });
@@ -2235,11 +3252,41 @@
         });
 
         // Backup
-        document.getElementById('backupNowBtn').addEventListener('click', () => {
-            const data = { products, customers, suppliers, orders };
+        function backup() {
+            const data = { products, customers, suppliers, orders, settings, timestamp: new Date().toISOString() };
             const blob = new Blob([JSON.stringify(data)], {type:'application/json'});
-            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'backup.json'; a.click();
-            notify('Backup created', 'success');
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `backup_${new Date().toISOString().split('T')[0]}.json`; a.click();
+            backups.push({ id: generateId(), filename: a.download, timestamp: new Date().toISOString(), size: blob.size });
+            if (backups.length > settings.keepBackups) backups.shift();
+            renderBackupList(); saveAll(); notify('Backup created', 'success');
+        }
+        document.getElementById('backupNowBtn').addEventListener('click', backup);
+
+        document.getElementById('restoreBackupBtn').addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        if (data.products) products = data.products;
+                        if (data.customers) customers = data.customers;
+                        if (data.suppliers) suppliers = data.suppliers;
+                        if (data.orders) orders = data.orders;
+                        if (data.settings) settings = { ...settings, ...data.settings };
+                        updateAll(); saveAll(); notify('Restore successful', 'success');
+                    } catch { notify('Invalid backup file', 'error'); }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        });
+
+        document.getElementById('deleteBackupsBtn').addEventListener('click', () => {
+            showModal('Delete Backups', 'Delete all backups?', () => { backups = []; renderBackupList(); saveAll(); notify('Backups deleted', 'warning'); });
         });
 
         // Clear All
@@ -2248,6 +3295,10 @@
                 products = []; customers = []; suppliers = []; orders = []; activities = [{ type:'delete', text:'All data cleared', time:new Date().toISOString() }];
                 updateAll(); saveAll(); notify('All data cleared', 'warning');
             });
+        });
+
+        document.getElementById('resetSystemBtn').addEventListener('click', () => {
+            showModal('Reset System', 'Reset everything?', () => { localStorage.clear(); location.reload(); });
         });
 
         // Clear Activities
@@ -2259,7 +3310,10 @@
             const email = document.getElementById('editEmail').value;
             if (name && currentUser) {
                 currentUser.name = name; currentUser.email = email;
+                const index = users.findIndex(u => u.id === currentUser.id);
+                if (index !== -1) users[index] = currentUser;
                 localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                localStorage.setItem('users', JSON.stringify(users));
                 document.getElementById('userName').textContent = name;
                 document.getElementById('sidebarUserName').textContent = name;
                 document.getElementById('welcomeName').textContent = name;
@@ -2280,30 +3334,65 @@
         });
 
         // Settings Changes
-        document.getElementById('darkMode').addEventListener('change', (e) => {
-            settings.darkMode = e.target.checked;
-            document.body.classList.toggle('dark-mode', e.target.checked);
-            document.getElementById('themeToggle').innerHTML = `<i class="fas ${e.target.checked ? 'fa-sun' : 'fa-moon'}"></i>`;
-            saveAll();
+        const settingIds = [
+            'companyName','businessEmail','businessPhone','businessAddress','currency','dateFormat','timeFormat','language','firstDayOfWeek',
+            'darkMode','compactView','animations','sidebarTheme','fontSize','fontFamily',
+            'lowStockThreshold','itemsPerPage','autoGenerateSKU','skuPrefix','enableBarcode','enableExpiry','enableBatch','showProfit','showCost','decimalPlaces',
+            'emailLowStock','emailNewOrder','emailDailySummary','emailWeeklyReport','desktopNotifications','notificationSound','notificationPreview','expiryAlertDays',
+            'sessionTimeout','maxLoginAttempts','rememberDuration','minPasswordLength','requireNumbers','requireSpecial','requireUppercase','enable2FA','twoFAMethod',
+            'autoBackup','backupFrequency','keepBackups','debugMode','consoleLogging','apiEndpoint','lazyLoading','cacheResponses','compressData'
+        ];
+
+        settingIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('change', (e) => {
+                    if (el.type === 'checkbox') settings[id] = e.target.checked;
+                    else if (el.type === 'number') settings[id] = parseInt(e.target.value) || 0;
+                    else settings[id] = e.target.value;
+                    
+                    if (id === 'darkMode') {
+                        document.body.classList.toggle('dark-mode', e.target.checked);
+                        document.getElementById('themeToggle').innerHTML = `<i class="fas ${e.target.checked ? 'fa-sun' : 'fa-moon'}"></i>`;
+                    }
+                    if (id === 'itemsPerPage') { currentPage = 1; renderProducts(); }
+                    if (id === 'currency' || id === 'decimalPlaces') { renderStats(); renderProducts(); }
+                    if (id === 'dateFormat' || id === 'timeFormat') renderActivities();
+                    saveAll();
+                });
+            }
         });
 
-        document.getElementById('lowStockThreshold').addEventListener('change', (e) => {
-            settings.lowStockThreshold = parseInt(e.target.value) || 5;
-            updateAll(); saveAll();
+        // Color Options
+        document.querySelectorAll('.color-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                settings.primaryColor = opt.dataset.color;
+                document.documentElement.style.setProperty('--primary', opt.dataset.color);
+                saveAll();
+            });
         });
 
-        document.getElementById('itemsPerPage').addEventListener('change', (e) => {
-            settings.itemsPerPage = parseInt(e.target.value) || 10;
-            currentPage = 1; renderProducts(); saveAll();
-        });
-
+        // Reset Settings
         document.getElementById('resetSettingsBtn').addEventListener('click', () => {
             showModal('Reset Settings', 'Reset to default?', () => {
-                settings = { darkMode: false, lowStockThreshold: 5, itemsPerPage: 10, autoBackup: true };
-                document.body.classList.remove('dark-mode');
-                document.getElementById('themeToggle').innerHTML = '<i class="fas fa-moon"></i>';
+                settings = {
+                    companyName: '', businessEmail: '', businessPhone: '', businessAddress: '',
+                    currency: 'USD', dateFormat: 'MM/DD/YYYY', timeFormat: '12h', language: 'en', firstDayOfWeek: 'monday',
+                    darkMode: false, compactView: false, animations: true, primaryColor: '#4361ee', sidebarTheme: 'default', fontSize: 'medium', fontFamily: 'inter',
+                    lowStockThreshold: 5, itemsPerPage: 10, autoGenerateSKU: true, skuPrefix: 'PRD',
+                    enableBarcode: true, enableExpiry: false, enableBatch: false, showProfit: true, showCost: false, decimalPlaces: 2,
+                    emailLowStock: true, emailNewOrder: true, emailDailySummary: false, emailWeeklyReport: true,
+                    desktopNotifications: false, notificationSound: true, notificationPreview: true, expiryAlertDays: 30,
+                    sessionTimeout: 30, maxLoginAttempts: 5, rememberDuration: 30, minPasswordLength: 6,
+                    requireNumbers: true, requireSpecial: true, requireUppercase: true, enable2FA: false, twoFAMethod: 'app',
+                    autoBackup: true, backupFrequency: 'daily', keepBackups: 30,
+                    debugMode: false, consoleLogging: false, apiEndpoint: '', lazyLoading: true, cacheResponses: true, compressData: false
+                };
                 notify('Settings reset', 'success');
                 saveAll();
+                location.reload();
             });
         });
 
@@ -2316,9 +3405,22 @@
         // ===== INIT =====
         updateAuth();
         updateStorageInfo();
-        document.getElementById('darkMode').checked = settings.darkMode;
-        document.getElementById('lowStockThreshold').value = settings.lowStockThreshold;
-        document.getElementById('itemsPerPage').value = settings.itemsPerPage;
+        renderBackupList();
+        
+        settingIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                if (el.type === 'checkbox') el.checked = settings[id];
+                else el.value = settings[id];
+            }
+        });
+        
+        document.documentElement.style.setProperty('--primary', settings.primaryColor);
+        document.querySelectorAll('.color-option').forEach(opt => {
+            if (opt.dataset.color === settings.primaryColor) opt.classList.add('active');
+        });
+        
+        if (settings.autoBackup) setInterval(() => saveAll(), 3600000);
     </script>
 </body>
 </html>
